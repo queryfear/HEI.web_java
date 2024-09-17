@@ -7,34 +7,34 @@ public class LabOne
     public static void main(String[] args) 
     {
         Scanner in = new Scanner(System.in);
-        int tests = in.nextInt();
-        double[] array = new double[tests];
-        int m = 0, n = 1;
+        System.out.print("Введите количество чисел t: ");
+        int t = in.nextInt();  
+        IntegerClass[] numbers = new IntegerClass[t];  
 
-        for (int i = 0; i < array.length; ++i) {
-            array[i] = in.nextDouble();
+        System.out.println("Введите " + t + " чисел:");
+        for (int i = 0; i < t; i++) {
+            int value = in.nextInt();
+            numbers[i] = new IntegerClass(value); 
         }
 
-        for (int i = 0; i < array.length; ++i) 
-        {
-            if (array[i] - (int)array[i] == 0.0) 
-            {
-                for (int j = i + 1; j < array.length - 1; ++j) 
-                {
-                    if (array[j] - (int)array[j] == 0.0) {
-                        m = (int)array[i];
-                        n = (int)array[j];
-                        break;
-                    }
+        IntegerClass n = null, m = null;
+        for (IntegerClass num : numbers) {
+            if (num.isPositive()) {
+                if (n == null) {
+                    n = num;
+                } else if (m == null) {
+                    m = num; 
+                    break;  
                 }
-
-                if (n != 1) break;
             }
         }
 
-        double p = (double)m / (double)n;
-
-        System.out.print(p);
+        if (n != null && m != null) {
+            double p = (double) m.getValue() / n.getValue();
+            System.out.printf("Дробная часть десятичной дроби r = m / n: %.5f\n", p);
+        } else {
+            System.out.println("Не удалось найти два положительных числа.");
+        }
 
         in.close();
     }
