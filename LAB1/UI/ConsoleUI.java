@@ -27,10 +27,10 @@ public class ConsoleUI implements IUI {
     }
 
     @Override
-    public void printNumbers(int delimoe, int delitel, double chastnoe) {
+    public void printNumbers(int divisible, int divider, double quotient) {
         // Вывод результата
-        System.out.printf("Fractional part of the division of %d/%d is: %.5f%n", 
-        delimoe, delitel, chastnoe);
+        System.out.printf("Дробная часть от деления от %d/%d равна %.5f%n", 
+        divisible, divider, quotient);
     }
 
 
